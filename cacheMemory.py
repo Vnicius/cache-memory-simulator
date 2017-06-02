@@ -22,8 +22,9 @@ def directMap(sequence,cache,ramSize):
         # print("CH: "+str(cacheHit)+"\nCM: "+str(cacheMiss))
         # input()
 
-    print("CH: "+str(cacheHit)+"\nCM: "+str(cacheMiss))
-    print("CH: "+str((cacheHit/len(sequence))*100)[:5]+"%")
+    # print("CH: "+str(cacheHit)+"\nCM: "+str(cacheMiss))
+    # print("CH: "+str((cacheHit/len(sequence))*100)[:5]+"%")
+    return str(cacheHit)
 
 def associativeMap(sequence, cache, way, ramSize):
     cacheMiss = 0
@@ -63,13 +64,16 @@ def associativeMap(sequence, cache, way, ramSize):
         #print(cache)
         #input()
 
-    print("CH: "+str(cacheHit)+"\nCM: "+str(cacheMiss))
-    print("CH: "+str((cacheHit/len(sequence))*100)[:4]+"%")
+    #print("CH: "+str(cacheHit)+"\nCM: "+str(cacheMiss))
+    #print("CH: "+str((cacheHit/len(sequence))*100)[:4]+"%")
+    return str(cacheHit)
 
 #################################
 
+# python3 cacheMemory.py file.in tamRam tamCache way
+
 if __name__ == "__main__":
-    text = open(sys.argv[3],"r")
+    text = open(sys.argv[1],"r")
     sequence = []
 
     for line in text.readlines():
@@ -77,15 +81,14 @@ if __name__ == "__main__":
 
     text.close()
 
-    print("File: "+ sys.argv[3])
-    cache = [None] * int(sys.argv[1])
-    ramSize = 1000
+    #print("File: "+ sys.argv[4])
+    cache = [None] * int(sys.argv[3])
+    ramSize = int(sys.argv[2])
 
-    print("Direct: ")
-    directMap(sequence,cache,ramSize)
-
-    cache = [None] * int(sys.argv[1])
-    way = int(sys.argv[2])
-
-    print("\nAssociative: ")
-    associativeMap(sequence, cache, way ,ramSize)
+    try:
+        way = int(sys.argv[4])
+        #print("\nAssociative: ")
+        print(str(len(sequence))+" "+associativeMap(sequence, cache, way ,ramSize))
+    except Exception as e:
+        #print("Direct: ")
+        print(str(len(sequence))+" "+directMap(sequence,cache,ramSize))
