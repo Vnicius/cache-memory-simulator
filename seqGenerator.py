@@ -1,8 +1,7 @@
-
 import random
 import sys
 
-tamMax = 1000
+tamMax = 20
 i = 1
 numCalls = int(sys.argv[1])
 out = open(sys.argv[1]+".in","w")
