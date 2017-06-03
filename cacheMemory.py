@@ -8,7 +8,6 @@ def directMap(sequence,cache,ramSize):
 
     for current in sequence:
         #print (cache)
-
         #if (cache[int(current/mapValue)] != current):
         if (cache[current % len(cache)] != current):
             cacheMiss += 1
@@ -17,10 +16,10 @@ def directMap(sequence,cache,ramSize):
         else:
             cacheHit += 1
 
-        # print (current)
-        # print (cache)
+        #print (current)
+        #print (str(cache)+"\n\n")
         # print("CH: "+str(cacheHit)+"\nCM: "+str(cacheMiss))
-        # input()
+        #input()
 
     # print("CH: "+str(cacheHit)+"\nCM: "+str(cacheMiss))
     # print("CH: "+str((cacheHit/len(sequence))*100)[:5]+"%")
@@ -48,7 +47,7 @@ def associativeMap(sequence, cache, way, ramSize):
     #         victim = (victim + 1) % len(cache)
 
     for current in sequence:
-        #print(current)
+        #print(cache)
         setValue = int(current/ramMapValue)
         #print(setValue)
         if current in cache[setValue * cacheMapValue : (setValue+1) * cacheMapValue]:
@@ -61,7 +60,7 @@ def associativeMap(sequence, cache, way, ramSize):
             #cache[random.randint(setValue * cacheMapValue, ((setValue+1) * cacheMapValue)-1)] = current
             victim[setValue] = (victim[setValue] + 1) % cacheMapValue
         #print(str(current))
-        #print(cache)
+        #print(str(cache)+"\n\n")
         #input()
 
     #print("CH: "+str(cacheHit)+"\nCM: "+str(cacheMiss))
