@@ -22,20 +22,11 @@ def plot():
             y_temp = []
         i += 1
 
-    plt.title("Memoria Cache (RAM:8000 e Cache:100)")
+    plt.title("Memoria Cache (RAM:"+sys.argv[3]+" e Cache:"+sys.argv[4]+")")
     plt.xlabel("Numero de calls")
     plt.ylabel("Taxa de cache hit")
-    plt.plot(x.pop(0),y.pop(0), x.pop(0),y.pop(0))
-    plt.legend(['Direct Map', 'Associative Map'], loc='best')
-    plt.savefig("teste.png")
-
-    #plt.title("C++")
-    #plt.xlabel("Nível de entropia (%)")
-    #plt.ylabel("Tempo médio (ms)")
-    #plt.plot(x.pop(0),y.pop(0))
-    #plt.legend(['C++ sort'], loc='best')
-    #plt.savefig("c++-1kk.png")
-
-
+    plt.plot(x.pop(0),y.pop(0), x.pop(0),y.pop(0), x.pop(0),y.pop(0), x.pop(0),y.pop(0))
+    plt.legend(['Direct Map', 'Associative Map', 'Associative Map - 2 way', 'Associative Map - 4 way'], loc='best')
+    plt.savefig(sys.argv[2]+".png")
 
 plot()

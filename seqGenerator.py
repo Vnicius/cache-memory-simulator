@@ -12,12 +12,12 @@ if isLoop:
     out = open("assets/loop/"+sys.argv[2]+".in","w")
     out.write(str(actual)+"\n")
     loop = []
-    maxLoop = 100
+    maxLoop = 150
 
     while i < numCalls:
         rNum = random.randint(0,100)
         #loop
-        if rNum > 99:
+        if rNum > 95:
             loopCount = random.randint(1, len(loop))
 
             if loopCount > numCalls:
