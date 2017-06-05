@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+#-*- coding : utf-8 -*-
 import random
 import sys
 
@@ -11,8 +13,8 @@ if isLoop:
     # loops
     out = open("assets/loop/"+sys.argv[2]+".in","w")
     out.write(str(actual)+"\n")
-    loop = []
-    maxLoop = 150
+    loop = [0]
+    maxLoop = 100
 
     while i < numCalls:
         rNum = random.randint(0,100)
@@ -20,8 +22,8 @@ if isLoop:
         if rNum > 95:
             loopCount = random.randint(1, len(loop))
 
-            if loopCount > numCalls:
-                loopCount = numCalls - len(loop)
+            if (loopCount + len(loop)) > numCalls:
+                loopCount = numCalls - len(loop) - 2
             elif loopCount > maxLoop:
                 loopCount = maxLoop
 
@@ -30,7 +32,7 @@ if isLoop:
                 loop.append(v)
 
             actual = loop[-1]
-            i += (loopCount + 1) % (tamMax - 1)
+            i = len(loop)
             continue
         #jump
         elif rNum > 80:
@@ -42,6 +44,10 @@ if isLoop:
 
         out.write(str(actual)+"\n")
         i += 1
+
+    # print(len(loop))
+    # for value in loop:
+    #     out.write(str(value)+"\n")
 else:
     out = open("assets/jmp/"+sys.argv[2]+".in","w")
     out.write(str(actual)+"\n")
